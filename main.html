@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subhan Yusli Ardian - 2211102233</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Profil Mahasiswa</h2>
+        <p><strong>Nama:</strong> Subhan Yusli Ardian</p>
+        <p><strong>NIM:</strong> 2211102233</p>
+        <p><strong>Asal Daerah:</strong> Gombong</p>
+        <img src="https://rizvisual.com/wp-content/uploads/2023/02/shutterstock_797685025-1-1-768x512.jpg" alt="foto makanan" class="">
+        <h3 class="mt-4">Formulir Pendaftaran</h3>
+        <form id="formulir">
+            <div class="mb-3">
+                <label for="nama" class="form-label">Nama Lengkap</label>
+                <input type="text" class="form-control" id="nama" placeholder="Masukkan nama">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Masukkan email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Masukkan password">
+            </div>
+            <div class="mb-3">
+                <label for="asal" class="form-label">Asal Daerah</label>
+                <select class="form-select" id="asal">
+                    <option selected>Pilih asal daerah</option>
+                    <option value="Luar Jawa">Luar Jawa</option>
+                    <option value="Dalam Jawa">Dalam Jawa</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="pesan" class="form-label">Pesan</label>
+                <textarea class="form-control" id="pesan" rows="3" placeholder="Tulis pesan"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Jenis Kelamin</label><br>
+                <input type="radio" name="gender" id="male" value="Laki-laki"> <label for="male">Laki-laki</label>
+                <input type="radio" name="gender" id="female" value="Perempuan" class="ms-3"> <label for="female">Perempuan</label>
+            </div>
+            <div class="mb-3">
+                <input type="checkbox" id="agree">
+                <label for="agree">Saya setuju dengan syarat dan ketentuan</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Kirim</button>
+        </form>
+        <div id="hasil" class="mt-4 alert alert-success d-none"></div>
+    </div>
+
+    <script>
+        document.getElementById("formulir").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let nama = document.getElementById("nama").value;
+            let email = document.getElementById("email").value;
+            let asal = document.getElementById("asal").value;
+            let pesan = document.getElementById("pesan").value;
+            let gender = document.querySelector('input[name="gender"]:checked');
+            
+            if (!nama || !email || asal === "Pilih asal daerah" || !gender) {
+                alert("Harap isi semua data dengan benar!");
+                return;
+            }
+
+            let hasil = `
+                <h4>Data Terkirim:</h4>
+                <p><strong>Nama:</strong> ${nama}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Asal Daerah:</strong> ${asal}</p>
+                <p><strong>Jenis Kelamin:</strong> ${gender.value}</p>
+                <p><strong>Pesan:</strong> ${pesan}</p>
+            `;
+
+            document.getElementById("hasil").innerHTML = hasil;
+            document.getElementById("hasil").classList.remove("d-none");
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
